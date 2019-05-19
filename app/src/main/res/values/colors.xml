@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+
+    <color name="booking_status_0">#FFCCCC</color>
+    <color name="booking_status_1">#FFF6B3</color>
+    <color name="booking_status_2">#eeeeee</color>
+</resources>

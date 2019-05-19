@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:map="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ProviderAddParkingPlaceActivity">
+
+    <fragment
+        android:id="@+id/map"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        map:layout_constraintBottom_toTopOf="@+id/guideline"
+        map:layout_constraintEnd_toEndOf="parent"
+        map:layout_constraintStart_toStartOf="parent"
+        map:layout_constraintTop_toTopOf="parent"/>
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        map:layout_constraintGuide_percent="0.5"/>
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#333333"
+        map:layout_constraintBottom_toBottomOf="parent"
+        map:layout_constraintEnd_toEndOf="parent"
+        map:layout_constraintStart_toStartOf="parent"
+        map:layout_constraintTop_toBottomOf="@+id/map">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/place_name_edit_text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="48dp"
+                android:layout_marginLeft="48dp"
+                android:layout_marginRight="48dp"
+                android:layout_marginStart="48dp"
+                android:layout_marginTop="32dp"
+                android:background="@drawable/bg_edit_text"
+                android:ems="10"
+                android:hint="ชื่อสถานที่จอด"
+                android:inputType="text"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <EditText
+                android:id="@+id/district_edit_text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/bg_edit_text"
+                android:ems="10"
+                android:hint="เขต"
+                android:inputType="text"
+                app:layout_constraintEnd_toEndOf="@id/place_name_edit_text"
+                app:layout_constraintStart_toStartOf="@id/place_name_edit_text"
+                app:layout_constraintTop_toBottomOf="@id/place_name_edit_text"/>
+
+            <EditText
+                android:id="@+id/lot_count_edit_text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/bg_edit_text"
+                android:ems="10"
+                android:hint="จำนวนที่จอดรถ"
+                android:inputType="number"
+                app:layout_constraintEnd_toEndOf="@id/place_name_edit_text"
+                app:layout_constraintStart_toStartOf="@id/place_name_edit_text"
+                app:layout_constraintTop_toBottomOf="@id/district_edit_text"/>
+
+            <EditText
+                android:id="@+id/fee_edit_text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/bg_edit_text"
+                android:ems="10"
+                android:hint="ค่าบริการ"
+                android:inputType="number"
+                app:layout_constraintEnd_toEndOf="@id/place_name_edit_text"
+                app:layout_constraintStart_toStartOf="@id/place_name_edit_text"
+                app:layout_constraintTop_toBottomOf="@id/lot_count_edit_text"/>
+
+            <EditText
+                android:id="@+id/remark_edit_text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/bg_edit_text"
+                android:ems="10"
+                android:hint="หมายเหตุ"
+                android:inputType="text"
+                app:layout_constraintEnd_toEndOf="@id/place_name_edit_text"
+                app:layout_constraintStart_toStartOf="@id/place_name_edit_text"
+                app:layout_constraintTop_toBottomOf="@id/fee_edit_text"/>
+
+            <Button
+                android:id="@+id/save_button"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="32dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/bg_button_login"
+                android:text="บันทึก"
+                android:textColor="#ffffff"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@id/place_name_edit_text"
+                app:layout_constraintStart_toStartOf="@id/place_name_edit_text"
+                app:layout_constraintTop_toBottomOf="@id/remark_edit_text"/>
+
+        </android.support.constraint.ConstraintLayout>
+    </ScrollView>
+</android.support.constraint.ConstraintLayout>

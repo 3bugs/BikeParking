@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:ignore="HardcodedText">
+
+    <ImageView
+        android:id="@+id/marker_image_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/pid_text_view"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/user_name_text_view"
+        app:srcCompat="@drawable/ic_person"/>
+
+    <TextView
+        android:id="@+id/user_name_text_view"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        app:layout_constraintEnd_toStartOf="@+id/accept_booking_button"
+        app:layout_constraintStart_toEndOf="@+id/marker_image_view"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="ชื่อ-นามสกุลผู้จอง"/>
+
+    <ImageView
+        android:id="@+id/more_image_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:clickable="true"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/marker_image_view"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/marker_image_view"
+        app:srcCompat="@drawable/ic_more"/>
+
+    <Button
+        android:id="@+id/accept_booking_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:text="ยืนยันการจอง"
+        app:layout_constraintBottom_toBottomOf="@+id/marker_image_view"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/marker_image_view"/>
+
+    <TextView
+        android:id="@+id/pid_text_view"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/user_name_text_view"
+        app:layout_constraintStart_toStartOf="@+id/user_name_text_view"
+        app:layout_constraintTop_toBottomOf="@+id/user_name_text_view"
+        tools:text="เลขบัตรประชาชน"/>
+
+    <TextView
+        android:id="@+id/badge_text_view"
+        android:layout_width="15dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/bg_badge"
+        android:gravity="center"
+        android:text="99"
+        android:textColor="@android:color/white"
+        android:textSize="10sp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/marker_image_view"
+        app:layout_constraintEnd_toEndOf="@+id/marker_image_view"
+        app:layout_constraintStart_toEndOf="@+id/marker_image_view"
+        app:layout_constraintTop_toTopOf="@+id/marker_image_view"/>
+
+</android.support.constraint.ConstraintLayout>
