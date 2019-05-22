@@ -14,6 +14,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -60,12 +61,11 @@ public class UserMapsActivity extends AppCompatActivity implements OnMapReadyCal
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
 
-        TextView nameTextView = navigationView.getHeaderView(0).findViewById(R.id.name_text_view);
         User user = MyPrefs.getUserPref(this);
-        nameTextView.setText(user.firstName + " " + user.lastName);
-
+        TextView nameTextView = navigationView.getHeaderView(0).findViewById(R.id.name_text_view);
+        nameTextView.setText(user == null ? "Guest" : user.firstName + " " + user.lastName);
         TextView pidTextView = navigationView.getHeaderView(0).findViewById(R.id.pid_text_view);
-        pidTextView.setText(user.pid);
+        pidTextView.setText(user == null ? "(not log in)" : user.pid);
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
@@ -131,7 +131,7 @@ public class UserMapsActivity extends AppCompatActivity implements OnMapReadyCal
                             double lng = Double.parseDouble(place.longitude);
 
                             LatLng position = new LatLng(lat, lng);
-                            Marker marker = mMap.addMarker(new MarkerOptions().position(position).title(place.district));
+                            Marker marker = mMap.addMarker(new MarkerOptions().position(position).title(place.placeName));
                             marker.setTag(place);
                             mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(position, 12));
                         }
@@ -155,7 +155,11 @@ public class UserMapsActivity extends AppCompatActivity implements OnMapReadyCal
                                 );
                                 detailsTextView.setText(msg);
 
-                                findViewById(R.id.book_button).setOnClickListener(new View.OnClickListener() {
+                                User user = MyPrefs.getUserPref(UserMapsActivity.this);
+                                Button bookButton = findViewById(R.id.book_button);
+                                bookButton.setVisibility(user == null ? View.INVISIBLE : View.VISIBLE);
+                                if (user != null)
+                                bookButton.setOnClickListener(new View.OnClickListener() {
                                     @Override
                                     public void onClick(View view) {
                                         doBooking(place);

@@ -15,6 +15,7 @@ import java.util.List;
 import java.util.Locale;
 
 import th.ac.dusit.dbizcom.bikeparking.R;
+import th.ac.dusit.dbizcom.bikeparking.model.Booking;
 import th.ac.dusit.dbizcom.bikeparking.model.ParkingPlace;
 
 public class ParkingPlaceListAdapter extends ArrayAdapter<ParkingPlace> {
@@ -63,8 +64,16 @@ public class ParkingPlaceListAdapter extends ArrayAdapter<ParkingPlace> {
         detailsTextView.setText(msg);
 
         TextView badgeTextView = v.findViewById(R.id.badge_text_view);
-        if (parkingPlace.bookingList.size() > 0) {
-            badgeTextView.setText(String.valueOf(parkingPlace.bookingList.size()));
+
+        int waitCount = 0;
+        for (Booking booking : parkingPlace.bookingList) {
+            if (booking.status == 0) {
+                waitCount++;
+            }
+        }
+
+        if (waitCount > 0) {
+            badgeTextView.setText(String.valueOf(waitCount));
         } else {
             badgeTextView.setVisibility(View.GONE);
         }

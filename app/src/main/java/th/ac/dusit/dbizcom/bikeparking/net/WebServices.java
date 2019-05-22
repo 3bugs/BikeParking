@@ -27,6 +27,7 @@ public interface WebServices {
     Call<RegisterResponse> register(
             @Field("role") int role,
             @Field("pid") String pid,
+            @Field("phone") String phone,
             @Field("password") String password,
             @Field("first_name") String firstName,
             @Field("last_name") String lastName

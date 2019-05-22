@@ -21,7 +21,7 @@ import static th.ac.dusit.dbizcom.bikeparking.LoginActivity.KEY_PID;
 public class RegisterActivity extends AppCompatActivity {
 
     private EditText mPidEditText, mPasswordEditText, mConfirmPasswordEditText;
-    private EditText mFirstNameEditText, mLastNameEditText;
+    private EditText mPhoneEditText, mFirstNameEditText, mLastNameEditText;
     private View mProgressView;
 
     private int mRole;
@@ -37,6 +37,7 @@ public class RegisterActivity extends AppCompatActivity {
         mFirstNameEditText = findViewById(R.id.first_name_edit_text);
         mLastNameEditText = findViewById(R.id.last_name_edit_text);
         mPidEditText = findViewById(R.id.pid_edit_text);
+        mPhoneEditText = findViewById(R.id.phone_edit_text);
         mPasswordEditText = findViewById(R.id.password_edit_text);
         mConfirmPasswordEditText = findViewById(R.id.confirm_password_edit_text);
         mProgressView = findViewById(R.id.progress_view);
@@ -49,7 +50,7 @@ public class RegisterActivity extends AppCompatActivity {
                     Utils.hideKeyboard(RegisterActivity.this);
                     doRegister();
                 } else {
-                    Utils.showShortToast(RegisterActivity.this, "กรอกข้อมูลให้ครบ");
+                    Utils.showShortToast(RegisterActivity.this, "กรอกข้อมูลให้ครบถ้วนและถูกต้อง");
                 }
             }
         });
@@ -73,6 +74,12 @@ public class RegisterActivity extends AppCompatActivity {
         if (password.length() > 0 && confirmPassword.length() > 0
                 && !password.equals(confirmPassword)) {
             mConfirmPasswordEditText.setError("กรอกยืนยันรหัสผ่านให้ตรงกัน");
+            valid = false;
+        }
+        String phone = mPhoneEditText.getText().toString().trim();
+        if (phone.length() == 0) {
+            mPhoneEditText.setText("");
+            mPhoneEditText.setError("กรอกเบอร์โทรศัพท์");
             valid = false;
         }
         String pid = mPidEditText.getText().toString().trim();
@@ -101,6 +108,7 @@ public class RegisterActivity extends AppCompatActivity {
 
     private void doRegister() {
         String pid = mPidEditText.getText().toString().trim();
+        String phone = mPhoneEditText.getText().toString().trim();
         String password = mPasswordEditText.getText().toString().trim();
         String firstName = mFirstNameEditText.getText().toString().trim();
         String lastName = mLastNameEditText.getText().toString().trim();
@@ -110,7 +118,9 @@ public class RegisterActivity extends AppCompatActivity {
         Retrofit retrofit = ApiClient.getClient();
         WebServices services = retrofit.create(WebServices.class);
 
-        Call<RegisterResponse> call = services.register(mRole, pid, password, firstName, lastName);
+        Call<RegisterResponse> call = services.register(
+                mRole, pid, phone, password, firstName, lastName
+        );
         call.enqueue(new MyRetrofitCallback<>(
                 RegisterActivity.this,
                 null,
