@@ -14,6 +14,8 @@ public class Booking {
     public final String userLastName;
     @SerializedName("user_pid")
     public final String userPid;
+    @SerializedName("user_phone")
+    public final String userPhone;
     @SerializedName("parking_place_id")
     public final int parkingPlaceId;
     @SerializedName("book_date")
@@ -22,12 +24,13 @@ public class Booking {
     public int status;
 
     public Booking(int id, int userId, String userFirstName, String userLastName,
-                   String userPid, int parkingPlaceId, String bookDate, int status) {
+                   String userPid, String userPhone, int parkingPlaceId, String bookDate, int status) {
         this.id = id;
         this.userId = userId;
         this.userFirstName = userFirstName;
         this.userLastName = userLastName;
         this.userPid = userPid;
+        this.userPhone = userPhone;
         this.parkingPlaceId = parkingPlaceId;
         this.bookDate = bookDate;
         this.status = status;

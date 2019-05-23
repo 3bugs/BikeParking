@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.List;
+import java.util.Locale;
 
 import th.ac.dusit.dbizcom.bikeparking.R;
 import th.ac.dusit.dbizcom.bikeparking.model.Booking;
@@ -70,7 +71,12 @@ public class BookingListAdapter extends ArrayAdapter<Booking> {
         userNameTextView.setText(userName);
 
         TextView pidTextView = v.findViewById(R.id.pid_text_view);
-        pidTextView.setText(booking.userPid);
+        String msg = String.format(
+                Locale.getDefault(),
+                "เลขประชาชน: %s\nเบอร์โทร: %s",
+                booking.userPid, booking.userPhone
+        );
+        pidTextView.setText(msg);
 
         Button acceptBookingButton = v.findViewById(R.id.accept_booking_button);
         acceptBookingButton.setText(buttonText);
