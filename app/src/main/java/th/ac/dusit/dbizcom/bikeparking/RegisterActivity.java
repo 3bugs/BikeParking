@@ -34,6 +34,9 @@ public class RegisterActivity extends AppCompatActivity {
         Intent intent = getIntent();
         mRole = intent.getIntExtra("role", -1);
 
+        View mainLayout = findViewById(R.id.main_layout);
+        mainLayout.setBackgroundResource(mRole == 0 ? R.color.bg_login_user : R.color.bg_login_provider);
+
         mFirstNameEditText = findViewById(R.id.first_name_edit_text);
         mLastNameEditText = findViewById(R.id.last_name_edit_text);
         mPidEditText = findViewById(R.id.pid_edit_text);

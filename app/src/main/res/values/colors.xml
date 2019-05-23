@@ -4,6 +4,9 @@
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
 
+    <color name="bg_login_user">@color/colorPrimaryDark</color>
+    <color name="bg_login_provider">#333333</color>
+
     <color name="booking_status_0">#FFCCCC</color>
     <color name="booking_status_1">#FFF6B3</color>
     <color name="booking_status_2">#eeeeee</color>

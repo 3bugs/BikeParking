@@ -37,6 +37,9 @@ public class LoginActivity extends AppCompatActivity {
         Intent intent = getIntent();
         mRole = intent.getIntExtra("role", -1);
 
+        View mainLayout = findViewById(R.id.main_layout);
+        mainLayout.setBackgroundResource(mRole == 0 ? R.color.bg_login_user : R.color.bg_login_provider);
+
         mPidEditText = findViewById(R.id.pid_edit_text);
         mPasswordEditText = findViewById(R.id.password_edit_text);
         mProgressView = findViewById(R.id.progress_view);
