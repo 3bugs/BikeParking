@@ -36,6 +36,9 @@ import th.ac.dusit.dbizcom.bikeparking.net.GetParkingPlaceResponse;
 import th.ac.dusit.dbizcom.bikeparking.net.MyRetrofitCallback;
 import th.ac.dusit.dbizcom.bikeparking.net.WebServices;
 
+import static th.ac.dusit.dbizcom.bikeparking.SlipListActivity.KEY_USER_TYPE;
+import static th.ac.dusit.dbizcom.bikeparking.SlipListActivity.USER_TYPE_PROVIDER;
+
 public class ProviderMainActivity extends AppCompatActivity
         implements ParkingPlaceListAdapter.OnMenuItemClickListener,
         NavigationView.OnNavigationItemSelectedListener {
@@ -195,7 +198,12 @@ public class ProviderMainActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
 
-        if (id == R.id.nav_log_out) {
+        if (id == R.id.nav_slip) {
+            Intent intent = new Intent(ProviderMainActivity.this, SlipListActivity.class);
+            intent.putExtra(KEY_USER_TYPE, USER_TYPE_PROVIDER);
+            startActivity(intent);
+
+        } else if (id == R.id.nav_log_out) {
             new AlertDialog.Builder(this)
                     .setTitle("Log Out")
                     .setMessage("ยืนยันออกจากระบบ?")

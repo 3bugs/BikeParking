@@ -76,7 +76,7 @@ public class MyRetrofitCallback<T extends BaseResponse> implements Callback<T> {
             mProgressView.setVisibility(View.GONE);
         }
         if (mListener != null) {
-            mListener.onError(NETWORK_ERROR_MESSAGE);
+            mListener.onError(t.getMessage());
             Log.e(TAG, t.getMessage());
         }
     }

@@ -1,12 +1,18 @@
 package th.ac.dusit.dbizcom.bikeparking;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ListView;
 
 import com.google.gson.Gson;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 import retrofit2.Call;
 import retrofit2.Retrofit;
@@ -48,10 +54,25 @@ public class ProviderBookingListActivity extends AppCompatActivity {
                 mParkingPlace.bookingList,
                 new BookingListAdapter.OnMenuItemClickListener() {
                     @Override
-                    public void onClickAcceptButton(Booking booking) {
+                    public void onClickAcceptButton(final Booking booking) {
                         switch (booking.status) {
                             case 0:
-                                doUpdateBooking(booking, 1);
+                                new AlertDialog.Builder(ProviderBookingListActivity.this)
+                                        .setTitle("ยืนยันการรับเงินและให้เช่าที่จอด")
+                                        .setMessage("คุณได้รับเงินจากลูกค้าแล้วใช่หรือไม่")
+                                        .setPositiveButton("ใช่", new DialogInterface.OnClickListener() {
+                                            @Override
+                                            public void onClick(DialogInterface dialog, int which) {
+                                                doUpdateBooking(booking, 1);
+                                                showSlip(booking);
+                                            }
+                                        })
+                                        .setNegativeButton("ไม่ใช่", new DialogInterface.OnClickListener() {
+                                            @Override
+                                            public void onClick(DialogInterface dialog, int which) {
+                                            }
+                                        })
+                                        .show();
                                 break;
                             case 1:
                                 doUpdateBooking(booking, 2);
@@ -64,6 +85,23 @@ public class ProviderBookingListActivity extends AppCompatActivity {
         );
 
         bookingListView.setAdapter(mAdapter);
+    }
+
+    private void showSlip(Booking booking) {
+        Date now = new Date();
+        String msg = String.format(
+                Locale.getDefault(),
+                "ได้รับเงิน %d บาท\n\nจาก %s %s\n\nวันที่ %s, เวลา %s น.",
+                mParkingPlace.fee,
+                booking.userFirstName, booking.userLastName,
+                new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(now),
+                new SimpleDateFormat("HH.mm", Locale.getDefault()).format(now)
+        );
+        Utils.showOkDialog(
+                this,
+                "สลิปการชำระเงิน",
+                msg
+        );
     }
 
     private void doUpdateBooking(final Booking booking, final int status) {

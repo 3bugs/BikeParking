@@ -88,4 +88,16 @@ public interface WebServices {
             @Field("booking_id") int bookingId,
             @Field("status") int status
     );
+
+    @FormUrlEncoded
+    @POST("get_slip")
+    Call<GetSlipResponse> getSlipProvider(
+            @Field("provider_id") int providerId
+    );
+
+    @FormUrlEncoded
+    @POST("get_slip")
+    Call<GetSlipResponse> getSlipUser(
+            @Field("user_id") int userId
+    );
 }

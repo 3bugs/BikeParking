@@ -40,6 +40,10 @@ import th.ac.dusit.dbizcom.bikeparking.net.GetParkingPlaceResponse;
 import th.ac.dusit.dbizcom.bikeparking.net.MyRetrofitCallback;
 import th.ac.dusit.dbizcom.bikeparking.net.WebServices;
 
+import static th.ac.dusit.dbizcom.bikeparking.SlipListActivity.KEY_USER_TYPE;
+import static th.ac.dusit.dbizcom.bikeparking.SlipListActivity.USER_TYPE_PROVIDER;
+import static th.ac.dusit.dbizcom.bikeparking.SlipListActivity.USER_TYPE_USER;
+
 public class UserMapsActivity extends AppCompatActivity implements OnMapReadyCallback, NavigationView.OnNavigationItemSelectedListener {
 
     private GoogleMap mMap;
@@ -84,7 +88,11 @@ public class UserMapsActivity extends AppCompatActivity implements OnMapReadyCal
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
 
-        if (id == R.id.nav_log_out) {
+        if (id == R.id.nav_slip) {
+            Intent intent = new Intent(UserMapsActivity.this, SlipListActivity.class);
+            intent.putExtra(KEY_USER_TYPE, USER_TYPE_USER);
+            startActivity(intent);
+        } else if (id == R.id.nav_log_out) {
             new AlertDialog.Builder(this)
                     .setTitle("Log Out")
                     .setMessage("ยืนยันออกจากระบบ?")
@@ -159,12 +167,12 @@ public class UserMapsActivity extends AppCompatActivity implements OnMapReadyCal
                                 Button bookButton = findViewById(R.id.book_button);
                                 bookButton.setVisibility(user == null ? View.INVISIBLE : View.VISIBLE);
                                 if (user != null)
-                                bookButton.setOnClickListener(new View.OnClickListener() {
-                                    @Override
-                                    public void onClick(View view) {
-                                        doBooking(place);
-                                    }
-                                });
+                                    bookButton.setOnClickListener(new View.OnClickListener() {
+                                        @Override
+                                        public void onClick(View view) {
+                                            doBooking(place);
+                                        }
+                                    });
 
                                 return false;
                             }
