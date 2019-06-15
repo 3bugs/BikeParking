@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    android:id="@+id/main_layout"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#333333"
@@ -13,11 +12,11 @@
         android:id="@+id/title_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
         android:layout_marginTop="32dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
         android:text="Bike Parking"
         android:textColor="@android:color/white"
         android:textSize="48sp"
@@ -27,42 +26,43 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_chainStyle="packed"/>
+        app:layout_constraintVertical_chainStyle="packed" />
 
     <ImageView
         android:id="@+id/logo_image_view"
         android:layout_width="225dp"
         android:layout_height="352dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_login"/>
+        app:srcCompat="@drawable/ic_login" />
 
     <EditText
         android:id="@+id/pid_edit_text"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="48dp"
-        android:layout_marginLeft="48dp"
-        android:layout_marginRight="48dp"
         android:layout_marginStart="48dp"
+        android:layout_marginLeft="48dp"
         android:layout_marginTop="60dp"
+        android:layout_marginEnd="48dp"
+        android:layout_marginRight="48dp"
         android:background="@drawable/bg_edit_text"
         android:ems="10"
         android:hint="เลขบัตรประชาชน"
         android:inputType="number"
+        android:maxLength="13"
         app:layout_constraintBottom_toTopOf="@+id/password_edit_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title_text_view"/>
+        app:layout_constraintTop_toBottomOf="@+id/title_text_view" />
 
     <EditText
         android:id="@+id/password_edit_text"
@@ -76,7 +76,7 @@
         app:layout_constraintEnd_toEndOf="@+id/pid_edit_text"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="@+id/pid_edit_text"
-        app:layout_constraintTop_toBottomOf="@+id/pid_edit_text"/>
+        app:layout_constraintTop_toBottomOf="@+id/pid_edit_text" />
 
     <Button
         android:id="@+id/login_button"
@@ -90,7 +90,7 @@
         app:layout_constraintEnd_toEndOf="@+id/password_edit_text"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="@+id/password_edit_text"
-        app:layout_constraintTop_toBottomOf="@+id/password_edit_text"/>
+        app:layout_constraintTop_toBottomOf="@+id/password_edit_text" />
 
     <Button
         android:id="@+id/register_button"
@@ -103,14 +103,14 @@
         app:layout_constraintEnd_toEndOf="@+id/login_button"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="@+id/login_button"
-        app:layout_constraintTop_toBottomOf="@+id/login_button"/>
+        app:layout_constraintTop_toBottomOf="@+id/login_button" />
 
     <Button
         android:id="@+id/skip_button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
         android:layout_marginTop="32dp"
+        android:layout_marginBottom="8dp"
         android:background="@drawable/bg_button_skip"
         android:text="ข้าม"
         android:textColor="#ffffff"
@@ -118,7 +118,7 @@
         app:layout_constraintEnd_toEndOf="@+id/register_button"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="@+id/register_button"
-        app:layout_constraintTop_toBottomOf="@+id/register_button"/>
+        app:layout_constraintTop_toBottomOf="@+id/register_button" />
 
     <LinearLayout
         android:id="@+id/progress_view"
@@ -135,7 +135,7 @@
 
         <ProgressBar
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content" />
 
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>
