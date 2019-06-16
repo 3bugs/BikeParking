@@ -534,8 +534,8 @@ function doGetSlip()
 {
     global $db, $response;
 
-    $providerId = $db->real_escape_string($_POST['provider_id']);
-    $userId = $db->real_escape_string($_POST['user_id']);
+    $providerId = $_POST['provider_id'];
+    $userId = $_POST['user_id'];
 
     if (isset($providerId)) {
         $sql = "SELECT b.id, b.pay_date, u.first_name, u.last_name, pp.fee, pp.provider_id
@@ -554,7 +554,7 @@ function doGetSlip()
                         ON b.parking_place_id = pp.id 
                     INNER JOIN user u 
                         ON b.user_id = u.id 
-                WHERE b.user_id = $userId AND b.status > 0
+                WHERE u.id = $userId AND b.status > 0
                 ORDER BY b.id DESC";
 
     } else {
